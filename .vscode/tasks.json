@@ -1,0 +1,14 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Watch TypeScript compilation",
+            "type": "typescript",
+            "tsconfig": "tsconfig.watch.json",
+            "option": "watch",
+            "problemMatcher": ["$tsc-watch"],
+            "group": "build",
+            "isBackground": true
+        }
+    ]
+}

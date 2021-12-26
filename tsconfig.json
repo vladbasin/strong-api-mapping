@@ -1,0 +1,32 @@
+{
+    "compilerOptions": {
+        "target": "es2019",
+        "module": "commonjs",
+        "lib": ["es2019", "dom"],
+        "allowJs": true,
+        "removeComments": true,
+        "strict": true,
+        "noImplicitAny": false,
+        "resolveJsonModule": true,
+        "moduleResolution": "node",
+        "baseUrl": ".",
+        "paths": {
+            "src/*": ["src/*"]
+        },
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "sourceMap": true,
+        "strictNullChecks": true,
+        "outDir": "./dist",
+        "declaration": true,
+        "types": ["reflect-metadata"]
+    },
+    "exclude": ["node_modules", "dist", "coverage", ".dist", ".build"],
+    "include": ["src"],
+    "ts-node": {
+        "require": ["tsconfig-paths/register"]
+    }
+}

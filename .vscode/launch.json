@@ -1,0 +1,11 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug sample",
+            "program": "${workspaceFolder}/src/sample/program.ts",
+            "request": "launch",
+            "type": "pwa-node",
+        },
+    ]
+}

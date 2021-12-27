@@ -92,7 +92,7 @@ export type RawApiRequestType = {
 };
 ```
 
-1. Call the following methods to map HTTP request to your model and vice versa with DRY principle
+5. Call the following methods to map HTTP request to your model and vice versa with DRY principle
 
 ```typescript
 // maps RawApiRequest to Model (RequestPayload) and validates it (throws `CodedError` with information if model is not valid)
@@ -103,5 +103,15 @@ mapPayloadToRawApiRequest(requestPayload);
 ```
 
 Also applicable to **response** models (`mapRawApiResponseToPayload()`, `mapPayloadToRawApiResponse()`).
+
+In case validation fails, the library throws `CodedError` instance with information which properties are not valid:
+```typescript
+{
+    message: 'ValidationError: "surname" is required'
+    code: 'ValidationFailed',
+    errors: [ { code: 'surname', message: 'any.required' } ],
+}
+```
+
 
 Thus, you can share request/response models with your API consumers, so they don't need to repeat the same mapping & validation logic. See: [@vladbasin/strong-api-client](https://github.com/vladbasin/strong-api-client)

@@ -44,7 +44,7 @@
     },
     "dependencies": {
         "@vladbasin/strong-api-constants": "^1.0.0",
-        "@vladbasin/strong-api-models": "^1.0.0",
+        "@vladbasin/strong-api-models": "^1.0.1",
         "@vladbasin/ts-types": "^1.0.4",
         "lodash": "^4.17.21"
     },

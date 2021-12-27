@@ -21,7 +21,7 @@ module.exports = {
     },
     plugins: ['@typescript-eslint', 'prettier', 'import'],
     rules: {
-        'prettier/prettier': 'error',
+        'prettier/prettier': ['error', { endOfLine: 'auto' }],
         'import/extensions': 'off',
         'import/no-unresolved': 'error',
         'no-console': 'off',
@@ -43,8 +43,6 @@ module.exports = {
         'no-underscore-dangle': ['error', { allowAfterThis: true }],
         'class-methods-use-this': 'off',
         'import/no-cycle': 'off',
-        endOfLine: 'auto',
-        'prettier/prettier': ['error', { endOfLine: 'auto' }],
     },
     settings: {
         'import/parsers': {

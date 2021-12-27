@@ -5,7 +5,10 @@ export const validatePayload = <T>(payload: T, schema: ObjectSchema<T>) => {
     const { error } = schema.validate(payload, { allowUnknown: true });
 
     if (error) {
-        const innerErrors: InnerErrorType[] = error.details.map(detail => ({ code: detail.context?.key || '', message: detail.type }));
+        const innerErrors: InnerErrorType[] = error.details.map(detail => ({
+            code: detail.context?.key || '',
+            message: detail.type,
+        }));
 
         throw CodedError.from(error, CommonErrorCodes.validationFailed, innerErrors);
     }

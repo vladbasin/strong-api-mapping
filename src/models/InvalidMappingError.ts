@@ -1,1 +1,1 @@
-export class InvalidMappingError extends Error { }
+export class InvalidMappingError extends Error {}

@@ -22,10 +22,10 @@
         "strictNullChecks": true,
         "outDir": "./dist",
         "declaration": true,
-        "types": ["reflect-metadata"]
+        "types": ["reflect-metadata", "jest"]
     },
     "exclude": ["node_modules", "dist", "coverage", ".dist", ".build"],
-    "include": ["src"],
+    "include": ["src", "tests"],
     "ts-node": {
         "require": ["tsconfig-paths/register"]
     }

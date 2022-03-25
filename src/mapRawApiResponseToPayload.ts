@@ -25,7 +25,8 @@ export const mapRawApiResponseToPayload = <T>(
                     metadata.parser,
                     metadata.isArray ? rawApiResponse.multiValueHeaders : rawApiResponse.headers,
                     metadata.sourceKey,
-                    metadata.isKeyCaseSensitive
+                    metadata.isKeyCaseSensitive,
+                    metadata.isArray
                 );
 
                 break;

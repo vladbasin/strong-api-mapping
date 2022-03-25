@@ -9,7 +9,8 @@ import {
 } from '.';
 
 export const defineDecorator = (options: {
-    source: MetadataSources;
+    isCustom: boolean;
+    source: MetadataSources | string;
     useKey: boolean;
     isKeyCaseSensitive: boolean;
     key?: string;
@@ -21,7 +22,7 @@ export const defineDecorator = (options: {
         const propType = Reflect.getMetadata('design:type', target, key);
 
         let isArray = false;
-        let parser = options.parser ?? wrapParserForNilAndBoolValues(propType);
+        let parser = wrapParserForNilAndBoolValues(options.parser ?? propType);
 
         if (propType.name === 'Array') {
             if (isNil(options.parser)) {
@@ -33,7 +34,21 @@ export const defineDecorator = (options: {
             isArray = true;
 
             const nilWrappedParser = wrapParserForNilAndBoolValues(parser);
-            parser = (arg: any) => arg?.map(t => nilWrappedParser(t)) || [];
+            parser = (arg: any) => {
+                if (!isNil(arg) && arg.constructor.name !== 'Array') {
+                    const result = nilWrappedParser(arg);
+
+                    if (result.constructor.name !== 'Array') {
+                        throw new InvalidMappingError(
+                            `Property ${propName} cannot be mapped, because value is not array or specified parser cannot convert it into array`
+                        );
+                    }
+
+                    return result;
+                }
+
+                return arg?.map(t => nilWrappedParser(t)) || [];
+            };
         }
 
         if (mappings.findIndex(t => t.propName === propName) >= 0) {
@@ -43,6 +58,7 @@ export const defineDecorator = (options: {
         }
 
         mappings.push({
+            isCustom: options.isCustom,
             propName,
             source: options.source,
             sourceKey: options.useKey ? options.key ?? propName : undefined,

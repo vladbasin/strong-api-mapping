@@ -9,4 +9,5 @@ export const header = (options: { key: string; parser?: ParserType }): PropertyD
         isKeyCaseSensitive: false,
         key: options.key,
         parser: options.parser,
+        isCustom: false,
     });

@@ -96,7 +96,11 @@ export type RawApiRequestType = {
 
 ```typescript
 // maps RawApiRequest to Model (RequestPayload) and validates it (throws `CodedError` with information if model is not valid)
-mapRawApiRequestToPayload(rawApiRequest, RequestPayload, RequestPayloadSchema);
+mapRawApiRequestToPayload<RequestPayload>({
+    rawApiRequest,
+    PayloadConstructor: RequestPayload,
+    schema: RequestPayloadSchema,
+});
 
 // maps Model (RequestPayload) to RawApiRequest
 mapPayloadToRawApiRequest(requestPayload);
@@ -115,3 +119,39 @@ In case validation fails, the library throws `CodedError` instance with informat
 
 
 Thus, you can share request/response models with your API consumers, so they don't need to repeat the same mapping & validation logic. See: [@vladbasin/strong-api-client](https://github.com/vladbasin/strong-api-client)
+
+## Custom decorator/mapping
+
+You can also specify custom mappings for custom decorator:
+
+1. Define custom decorator
+
+```typescript
+import { defineDecorator, ParserType } from '@vladbasin/strong-api-mapping';
+
+export const context = (options: { key?: string; parser?: ParserType }): PropertyDecorator =>
+    defineDecorator({
+        source: 'context',
+        useKey: true,
+        isKeyCaseSensitive: false,
+        key: options.key,
+        parser: options.parser,
+        isCustom: true,
+    });
+```
+
+2. Specify data for custom context
+
+```typescript
+mapRawApiRequestToPayload<RequestPayload>({
+    rawApiRequest,
+    PayloadConstructor: RequestPayload,
+    schema: RequestPayloadSchema,
+    customApiRequestData: {
+        context: {
+            customKey: 'customValue',
+            //...
+        },
+    },
+});
+```

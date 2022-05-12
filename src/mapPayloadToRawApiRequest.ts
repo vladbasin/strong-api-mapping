@@ -49,7 +49,7 @@ export const mapPayloadToRawApiRequest = (payload: any): RawApiRequestType => {
                         metadata.isKeyCaseSensitive,
                         payload[metadata.propName]?.map(t => String(t))
                     );
-                } else {
+                } else if (payload[metadata.propName]) {
                     setKeyCaseBasedValue(
                         parametersMap[metadata.source],
                         metadata.sourceKey,

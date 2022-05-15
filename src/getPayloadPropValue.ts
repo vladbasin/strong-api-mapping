@@ -11,8 +11,6 @@ export const getPayloadPropValue = (
     isArrayValueExpected: boolean
 ) => {
     const value = !isNil(sourceKey) ? getKeyCaseBasedValue(map || {}, sourceKey, isKeyCaseSensitive) : map;
-    console.log(sourceKey, value);
-
     const parsedValue = parser(value);
 
     if (!isNil(parsedValue)) {

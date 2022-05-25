@@ -23,6 +23,7 @@ module.exports = {
     rules: {
         'prettier/prettier': ['error', { endOfLine: 'auto' }],
         'import/extensions': 'off',
+        'import/no-extraneous-dependencies': 'off',
         'import/no-unresolved': 'error',
         'no-console': 'off',
         'no-unused-vars': ['off', { args: 'all', argsIgnorePattern: '^_' }],

@@ -836,10 +836,10 @@
   resolved "https://registry.yarnpkg.com/@vladbasin/strong-api-constants/-/strong-api-constants-1.0.0.tgz#9621f0e6d5a7cc7a9cbd3631add280c76b91bdaa"
   integrity sha512-lOhaIXmUQQOr18XCxFt6s0M80nloEQWvgJHdYH4k5IFQmyVaVj0bg8Bxu+Q3c/roPlHqqrCHT5elWJtbXaUnzA==
 
-"@vladbasin/strong-api-models@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@vladbasin/strong-api-models/-/strong-api-models-1.0.1.tgz#905eed3142132c2fa735299c5b00934dbdb78484"
-  integrity sha512-YNC34bwFrS87QUvgsGH0i73xJrBQA7h8EuJAFmeiVSAlB4CH92BU1+8c9X10Mf2WHL28vaosTKwaQvZz3vlcFg==
+"@vladbasin/strong-api-models@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@vladbasin/strong-api-models/-/strong-api-models-1.0.3.tgz#fc349ec8fe8ff2090ebf1f60b39315e10eb9ced6"
+  integrity sha512-8q5+PcCLjfSg6EBAQhXw3t6zR7IMV2Bccjznc0CDeYPdhlNHDP3I9ZbQ3NNHxKpyFnmdsnasM+ocJqd/j3FhMw==
   dependencies:
     "@vladbasin/strong-api-constants" "^1.0.0"
 

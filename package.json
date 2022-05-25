@@ -34,6 +34,7 @@
         "@types/reflect-metadata": "^0.1.0",
         "@typescript-eslint/eslint-plugin": "^5.8.0",
         "@typescript-eslint/parser": "^5.8.0",
+        "@vladbasin/strong-api-models": "^1.0.3",
         "barrelsby": "^2.2.0",
         "eslint": "^8.5.0",
         "eslint-config-airbnb-base": "^15.0.0",
@@ -51,11 +52,11 @@
     },
     "dependencies": {
         "@vladbasin/strong-api-constants": "^1.0.0",
-        "@vladbasin/strong-api-models": "^1.0.1",
         "@vladbasin/ts-types": "^1.0.4",
         "lodash": "^4.17.21"
     },
     "peerDependencies": {
+        "@vladbasin/strong-api-models": "^1.0.3",
         "joi": "^17.5.0",
         "reflect-metadata": "^0.1.13"
     }

@@ -18,7 +18,7 @@ export const defineDecorator = (options: {
     priority?: number;
 }): PropertyDecorator => {
     return (target, key) => {
-        const mappings = getMappingMetadata(target);
+        const mappings = [...getMappingMetadata(target)];
         const propName = key.toString();
         const propType = Reflect.getMetadata('design:type', target, key);
 

@@ -9,4 +9,5 @@ export type MappingMetadataType = {
     isArray: boolean;
     isCustom: boolean;
     parser: ParserType;
+    priority: number;
 };

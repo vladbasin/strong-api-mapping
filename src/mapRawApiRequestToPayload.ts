@@ -37,13 +37,15 @@ export const mapRawApiRequestToPayload = <T>(options: MapApiRequestToPayloadOpti
                 return;
             }
 
-            payload[metadata.propName] = getPayloadPropValue(
-                metadata.parser,
-                customApiRequestData[metadata.source],
-                metadata.sourceKey,
-                metadata.isKeyCaseSensitive,
-                metadata.isArray
-            );
+            payload[metadata.propName] =
+                payload[metadata.propName] ||
+                getPayloadPropValue(
+                    metadata.parser,
+                    customApiRequestData[metadata.source],
+                    metadata.sourceKey,
+                    metadata.isKeyCaseSensitive,
+                    metadata.isArray
+                );
 
             return;
         }
@@ -52,22 +54,26 @@ export const mapRawApiRequestToPayload = <T>(options: MapApiRequestToPayloadOpti
             if (arrayNotAllowedSources.includes(metadata.source)) {
                 throw new InvalidMappingError(`Array mapping is not allowed for ${arrayNotAllowedSources.join(', ')}`);
             } else {
-                payload[metadata.propName] = getPayloadPropValue(
+                payload[metadata.propName] =
+                    payload[metadata.propName] ||
+                    getPayloadPropValue(
+                        metadata.parser,
+                        parametersMap[parametersMultiValueProps[metadata.source]],
+                        metadata.sourceKey,
+                        metadata.isKeyCaseSensitive,
+                        metadata.isArray
+                    );
+            }
+        } else {
+            payload[metadata.propName] =
+                payload[metadata.propName] ||
+                getPayloadPropValue(
                     metadata.parser,
-                    parametersMap[parametersMultiValueProps[metadata.source]],
+                    parametersMap[metadata.source],
                     metadata.sourceKey,
                     metadata.isKeyCaseSensitive,
                     metadata.isArray
                 );
-            }
-        } else {
-            payload[metadata.propName] = getPayloadPropValue(
-                metadata.parser,
-                parametersMap[metadata.source],
-                metadata.sourceKey,
-                metadata.isKeyCaseSensitive,
-                metadata.isArray
-            );
         }
     });
 

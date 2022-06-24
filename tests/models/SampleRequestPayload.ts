@@ -1,16 +1,18 @@
 import { context } from '../decorators';
 import { body, header, path, query } from '../../src/decorators';
 import { DetailsType } from './types/DetailsType';
+import { InheritedRequestPayload } from './InheritedRequestPayload';
 
-export class SampleRequestPayload {
-    @path()
-    public userId!: number;
-
+export class SampleRequestPayload extends InheritedRequestPayload {
     @path({ key: 'userId' })
     public id!: number;
 
     @query()
     public name!: string;
+
+    @query()
+    @path({ key: 'name', priority: 1 })
+    public prioritizedName!: string;
 
     @query()
     public isAdmin!: boolean;

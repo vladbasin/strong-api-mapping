@@ -2,7 +2,7 @@ import { MetadataSources } from '../models';
 import { defineDecorator } from '../defineDecorator';
 import { ParserType } from '../types';
 
-export const query = (options?: { key?: string; parser?: ParserType }): PropertyDecorator =>
+export const query = (options?: { key?: string; parser?: ParserType; priority?: number }): PropertyDecorator =>
     defineDecorator({
         source: MetadataSources.query,
         useKey: true,

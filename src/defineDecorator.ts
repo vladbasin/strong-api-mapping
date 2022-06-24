@@ -15,6 +15,7 @@ export const defineDecorator = (options: {
     isKeyCaseSensitive: boolean;
     key?: string;
     parser?: ParserType;
+    priority?: number;
 }): PropertyDecorator => {
     return (target, key) => {
         const mappings = getMappingMetadata(target);
@@ -51,12 +52,6 @@ export const defineDecorator = (options: {
             };
         }
 
-        if (mappings.findIndex(t => t.propName === propName) >= 0) {
-            throw new InvalidMappingError(
-                `Multiple decorators for the same propery are not supported (property = ${propName})`
-            );
-        }
-
         mappings.push({
             isCustom: options.isCustom,
             propName,
@@ -65,6 +60,7 @@ export const defineDecorator = (options: {
             isKeyCaseSensitive: options.isKeyCaseSensitive,
             isArray,
             parser,
+            priority: options.priority || 0,
         });
 
         setMappingMetadata(mappings, target);

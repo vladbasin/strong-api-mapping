@@ -8,6 +8,7 @@ test('maps raw api request correctly', () => {
         rawApiRequest: {
             pathParams: {
                 userId: '2887',
+                name: 'prioritized',
             },
             queryParams: {
                 name: 'name',
@@ -41,6 +42,7 @@ test('maps raw api request correctly', () => {
     expect(payload.userId).toBe(2887);
     expect(payload.id).toBe(2887);
     expect(payload.name).toBe('name');
+    expect(payload.prioritizedName).toBe('prioritized');
     expect(payload.isAdmin).toBe(true);
     expect(payload.surname).toBe('lastName');
     expect(payload.cars).toEqual(['car1', 'car2', 'car3']);
@@ -54,6 +56,4 @@ test('maps raw api request correctly', () => {
     expect(payload.factsKey).toEqual(['first', 'second', 'third']);
     expect(payload.serializedArray).toEqual(['first', 'second', 'third']);
     expect(payload.serializedDetails).toEqual({ line1: 'l1', line2: 'l2' });
-
-    console.log(payload);
 });

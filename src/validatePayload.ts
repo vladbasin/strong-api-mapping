@@ -2,7 +2,7 @@ import { CodedError, CommonErrorCodes, InnerErrorType } from '@vladbasin/strong-
 import { ObjectSchema } from 'joi';
 
 export const validatePayload = <T>(payload: T, schema: ObjectSchema<T>) => {
-    const { error } = schema.validate(payload, { allowUnknown: true });
+    const { error } = schema.validate(payload, { allowUnknown: true, context: payload });
 
     if (error) {
         const innerErrors: InnerErrorType[] = error.details.map(detail => ({

@@ -1,6 +1,13 @@
 import { ObjectSchema } from 'joi';
 import { isNil } from 'lodash';
-import { getMappingMetadata, getPayloadPropValue, InvalidMappingError, MetadataSources, validatePayload } from '.';
+import {
+    getMappingMetadata,
+    getPayloadPropValue,
+    InvalidMappingError,
+    MetadataSources,
+    parseJson,
+    validatePayload,
+} from '.';
 import { CustomApiRequestDataType, Newable, RawApiRequestType } from './types';
 
 export type MapApiRequestToPayloadOptionsType<T> = {
@@ -27,7 +34,7 @@ export const mapRawApiRequestToPayload = <T>(options: MapApiRequestToPayloadOpti
         [MetadataSources.query]: rawApiRequest.queryParams,
         [MetadataSources.path]: rawApiRequest.pathParams,
         [MetadataSources.header]: rawApiRequest.headers,
-        [MetadataSources.body]: !isNil(rawApiRequest.body) ? JSON.parse(rawApiRequest.body) : undefined,
+        [MetadataSources.body]: isNil(rawApiRequest.body) ? undefined : parseJson(rawApiRequest.body),
         [parametersMultiValueProps[MetadataSources.query]]: rawApiRequest.multiValueQueryParams,
         [parametersMultiValueProps[MetadataSources.header]]: rawApiRequest.multiValueHeaders,
     };
